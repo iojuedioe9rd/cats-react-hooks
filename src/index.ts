@@ -8,7 +8,7 @@ import { useDebounce as useDebounceTMP } from "./useDebounce";
 import React from "react";
 import { useUpdateEffect as useUpdateEffectTMP } from "./useUpdateEffect";
 import { useArray as useArrayTMP, FilterCallback } from "./useArray";
-
+import {usePrevious as usePreviousTMP} from "./usePrevious"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -60,4 +60,9 @@ export function useUpdateEffect(callback: React.EffectCallback, dependencies: Re
 export function useArray<T>(defaultValue: T[] | (() => T[])): { array: T[]; set: React.Dispatch<React.SetStateAction<T[]>>; push: (element: T) => void; filter: (callback: FilterCallback<T>) => void; update: (index: number, newElement: T) => void; remove: (index: number) => void; clear: () => void; }
 {
     return useArrayTMP<T>(defaultValue)
+}
+
+export function usePrevious<T>(value: T)
+{
+    return usePreviousTMP(value)
 }
