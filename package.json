@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc src/index.ts --declaration --declarationDir ./types --outDir ./dist --target ES6 --allowSyntheticDefaultImports",
-    "semantic-release": "semantic-release --dry-run -r https://github.com/iojuedioe9rd/cats-react-hooks",
+    "semantic-release": "semantic-release --dry-run -r https://github.com/iojuedioe9rd/cats-react-hooks ",
     "commit": "git-cz"
   },
   "keywords": [],
