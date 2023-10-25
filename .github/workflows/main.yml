@@ -20,5 +20,5 @@ jobs:
       with:
         node-version:  16.x
         cache: 'npm'
-    - run: npm i .
+    - run: npm i . && npm i -g typescript tsc
     - run: npm run build
