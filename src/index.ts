@@ -1,4 +1,4 @@
-import { useLocalStorage as useLocalStorageTMP } from "./useLocalStorage";
+import { useLocalStorage as useLocalStorageTMP, useSessionStorage as useSessionStorageTMP, useStorage as useStorageTMP } from "./useStorage";
 import { useFetch as useFetchTMP } from "./useFetch";
 import { useOnlineStatus as useOnlineStatusTMP } from "./useOnlineStatus";
 import {useJSON as useJSONTMP} from "./useJSON"
@@ -9,6 +9,7 @@ import React from "react";
 import { useUpdateEffect as useUpdateEffectTMP } from "./useUpdateEffect";
 import { useArray as useArrayTMP, FilterCallback } from "./useArray";
 import {usePrevious as usePreviousTMP} from "./usePrevious"
+import {useStateWithHistory as useStateWithHistoryTMP} from "./useStateWithHistory"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -65,4 +66,21 @@ export function useArray<T>(defaultValue: T[] | (() => T[])): { array: T[]; set:
 export function usePrevious<T>(value: T)
 {
     return usePreviousTMP(value)
+}
+
+export function useStateWithHistory<T>(
+    defaultValue: T | (() => T),
+    {capacity = 10}: {capacity: number}
+) {
+    return useStateWithHistoryTMP<T>(defaultValue, {capacity})
+}
+
+export function useSessionStorage<T>(key: string, initialValue: T | (() => T))
+{
+    return useSessionStorageTMP<T>(key, initialValue)
+}
+
+export function useStorage<T>(key: string, initialValue: T | (() => T), storageObject: Storage)
+{
+    return useStorageTMP<T>(key, initialValue, storageObject)
 }
