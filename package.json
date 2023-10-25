@@ -11,7 +11,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc src/index.ts --declaration --declarationDir ./types --outDir ./dist --target ES6 --allowSyntheticDefaultImports",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "commit": "git-cz"
   },
   "keywords": [],
   "author": "Cats Studio",
@@ -23,6 +24,12 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.31",
+    "cz-conventional-changelog": "^3.3.0",
     "semantic-release": "^22.0.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
