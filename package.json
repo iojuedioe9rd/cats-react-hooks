@@ -1,12 +1,12 @@
 {
   "name": "cats-react-hooks",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/index.js",
   "types": "./types",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iojuedioe9rd/cats-react-hooks.git"
+    "url": "git+https://github.com/iojuedioe9rd/cats-react-hooks.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
