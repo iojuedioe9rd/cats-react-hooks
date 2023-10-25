@@ -1,76 +1,14 @@
-import { useReducer, useEffect, useDebugValue } from 'react';
+import useAsync from "./useAsync"
 
-type State = {
-    data: any;
-    loading: boolean;
-    error: Error | null;
-};
-
-type Action = 
-  | { type: 'LOADING' }
-  | { type: 'SUCCESS'; payload: any }
-  | { type: 'ERROR'; payload: Error };
-
-const dataFetchReducer = (state: State, action: Action) => {
-    
-    switch (action.type) {
-        case 'LOADING':
-            return { ...state, loading: true };
-        case 'SUCCESS':
-            return { ...state, data: action.payload, loading: false };
-        case 'ERROR':
-            return { ...state, error: action.payload, loading: false };
-        default:
-            throw new Error();
-    }
+const DEFAULT_OPTONS: RequestInit  = {
+    headers: {"Content-Type": "application/json"},
 }
 
-export const useFetch = async<T>(url: string)=> {
-    await useDebugValue(`loading... ${url}`)
-    const [state, dispatch] = await useReducer(dataFetchReducer, {
-        data: null,
-        loading: false,
-        error: null,
-    });
-
-    useEffect( () => {
-        let didCancel = false;
-
-        async function fetchData() {
-            await dispatch({ type: 'LOADING' });
-
-            try {
-                const response = await fetch(url);
-                if (!didCancel) {
-                    const data = await response.json() as Promise<T>;
-                    await dispatch({ type: 'SUCCESS', payload: data });
-                }
-            } catch (error) {
-                if (!didCancel) {
-                    await dispatch({ type: 'ERROR', payload: error });
-                }
-            }
-        }
-
-         fetchData();
-
-        return  () => {
-            didCancel = true;
-        };
-    }, [url]);
-
-    if(state.error === null)
-    {
-        await useDebugValue(state.error)
-    }
-    else
-    {
-        await useDebugValue(`SUCCESS ${url}`)
-    }
-    return await { ...state as {
-        data: T,
-        loading: boolean,
-        error: Error | null,
-    } };
+export function useFetch<T>(url: string, options: RequestInit = {}, dependencies: React.DependencyList = []) {
+    return useAsync<T>(async () => {
+        const res = await fetch(url, { ...DEFAULT_OPTONS, ...options })
+        if (res.ok) return res.json()
+        const json = await res.json()
+        return await Promise.reject(json)
+    }, dependencies)
 }
-

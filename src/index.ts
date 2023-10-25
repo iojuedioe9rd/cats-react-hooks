@@ -5,27 +5,27 @@ import {useJSON as useJSONTMP} from "./useJSON"
 import { useToggle as useToggleTMP } from "./useToggle";
 import { useTimeout as useTimeoutTMP } from "./useTimeout";
 import { useDebounce as useDebounceTMP } from "./useDebounce";
-import React from "react";
+import React, { SetStateAction } from "react";
 import { useUpdateEffect as useUpdateEffectTMP } from "./useUpdateEffect";
 import { useArray as useArrayTMP, FilterCallback } from "./useArray";
 import {usePrevious as usePreviousTMP} from "./usePrevious"
 import {useStateWithHistory as useStateWithHistoryTMP} from "./useStateWithHistory"
+import useAsyncTMP from "./useAsync"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
     return useLocalStorageTMP(key,initialValue)
 }
 
-export function useFetch<T>(url: string | URL)
-{
-    return useFetchTMP<T>(url.toString())
-}
 
 export function useOnlineStatus()
 {
     return useOnlineStatusTMP()
 }
 
+/**
+ * @deprecated Use the Fetch Hook Instead
+ */
 export function useJSON<T>(url: string | URL)
 {
     return useJSONTMP<T>(url)
@@ -83,4 +83,14 @@ export function useSessionStorage<T>(key: string, initialValue: T | (() => T))
 export function useStorage<T>(key: string, initialValue: T | (() => T), storageObject: Storage)
 {
     return useStorageTMP<T>(key, initialValue, storageObject)
+}
+
+export function useAsync<T>(callback: () => Promise<SetStateAction<T | undefined>>, dependencies: React.DependencyList = [])
+{
+    return useAsyncTMP<T>(callback, dependencies)
+}
+
+export function useFetch<T>(url: string | URL, options: RequestInit = {}, dependencies: React.DependencyList = [])
+{
+    return useFetchTMP<T>(url.toString(), options, dependencies)
 }

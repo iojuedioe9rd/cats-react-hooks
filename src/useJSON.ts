@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useFetch} from "./useFetch"
 
 type jsonInfo<T> =
 {
@@ -6,27 +6,27 @@ type jsonInfo<T> =
     isLoaded?: boolean
     isError?: boolean
 }
+
+/**
+ * @deprecated Use the Fetch Hook Instead
+ */
 export function useJSON<T>(url: string | URL)
 {
-    const [json, setJSON] = useState<jsonInfo<T>>({data: undefined, isLoaded: false, isError: false})
+    var {
+        error,
+        value} = useFetch<T>(url.toString())
     
-
-    function useLoad(req: XMLHttpRequest)
+    var json: jsonInfo<T> = {}
+    if(error !== undefined)
     {
-        if(req.readyState == req.DONE)
-        {
-            setJSON({data: JSON.parse(req.responseText), isLoaded: true, isError: false})
-        }
+        json.isLoaded = false
+        json.isError = true
     }
-
-    let req: XMLHttpRequest = new XMLHttpRequest()
-    req.addEventListener("load", useLoad.bind(this, req))
-    req.addEventListener("error", () => {
-        setJSON({isError: true})
-    })
-    req.open("GET", url)
-    
-    req.send()
+    else
+    {
+        json.data = value
+        json.isLoaded  = false
+    }
 
     return json
 }
