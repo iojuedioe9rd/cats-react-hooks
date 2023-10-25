@@ -6,12 +6,12 @@
   "types": "./types",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iojuedioe9rd/cats-react-hooks"
+    "url": "https://github.com/iojuedioe9rd/cats-react-hooks/"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc src/index.ts --declaration --declarationDir ./types --outDir ./dist --target ES6 --allowSyntheticDefaultImports",
-    "semantic-release": "semantic-release --dry-run",
+    "semantic-release": "semantic-release --dry-run -r https://github.com/iojuedioe9rd/cats-react-hooks",
     "commit": "git-cz"
   },
   "keywords": [],
