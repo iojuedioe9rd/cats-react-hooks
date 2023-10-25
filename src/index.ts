@@ -61,3 +61,5 @@ export function useArray<T>(defaultValue: T[] | (() => T[])): { array: T[]; set:
 {
     return useArrayTMP<T>(defaultValue)
 }
+
+console.log("ji")
