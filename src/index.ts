@@ -18,6 +18,7 @@ import useOnScreenTMP from "./useOnScreen";
 import useWindowSizeTMP from "./useWindowSize"
 import useLoggerTMP, {LoggerConfig} from "./useLogger";
 import useMediaQueryTMP from "./useMediaQuery"
+import useGeolocationTMP from "./useGeolocation"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -138,4 +139,9 @@ export function useLogger(loggerConfig: LoggerConfig)
 export function useMediaQuery(mediaQuery: string)
 {
     return useMediaQueryTMP(mediaQuery)
+}
+
+export function useGeolocation(options?: PositionOptions)
+{
+    return useGeolocationTMP(options)
 }
