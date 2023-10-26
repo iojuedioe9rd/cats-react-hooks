@@ -5,12 +5,17 @@ import {useJSON as useJSONTMP} from "./useJSON"
 import { useToggle as useToggleTMP } from "./useToggle";
 import { useTimeout as useTimeoutTMP } from "./useTimeout";
 import { useDebounce as useDebounceTMP } from "./useDebounce";
-import React, { SetStateAction } from "react";
+import React, { EffectCallback, SetStateAction } from "react";
 import { useUpdateEffect as useUpdateEffectTMP } from "./useUpdateEffect";
 import { useArray as useArrayTMP, FilterCallback } from "./useArray";
 import {usePrevious as usePreviousTMP} from "./usePrevious"
 import {useStateWithHistory as useStateWithHistoryTMP} from "./useStateWithHistory"
 import useAsyncTMP from "./useAsync"
+import useScriptTMP from "./useScript";
+import useDeepCompareEffectTMP from "./useDeepCompareEffect"
+import useEventListenerTMP from "./useEventListener";
+import useOnScreenTMP from "./useOnScreen";
+import useWindowSizeTMP from "./useWindowSize"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -93,4 +98,32 @@ export function useAsync<T>(callback: () => Promise<SetStateAction<T | undefined
 export function useFetch<T>(url: string | URL, options: RequestInit = {}, dependencies: React.DependencyList = [])
 {
     return useFetchTMP<T>(url.toString(), options, dependencies)
+}
+
+export function useScript(url: string | URL)
+{
+    return useScriptTMP(url.toString())
+}
+
+export function useDeepCompareEffect(callback: EffectCallback, dependencies?: React.DependencyList)
+{
+    return useDeepCompareEffectTMP(callback, dependencies)
+}
+
+export function useEventListener(
+    eventType: string,
+    callback: (e: Event) => (void | Promise<void>),
+    element = window
+)
+{
+    return useEventListenerTMP(eventType, callback, element)
+}
+export function useOnScreen(ref: React.MutableRefObject<HTMLElement>, rootMargin = "0px")
+{
+    return useOnScreenTMP(ref, rootMargin)
+}
+
+export function useWindowSize()
+{
+    return useWindowSizeTMP()
 }

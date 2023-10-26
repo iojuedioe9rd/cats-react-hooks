@@ -1,30 +1,32 @@
 {
   "name": "cats-react-hooks",
-  "version": "1.0.4",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/index.js",
-  "types": "./types",
+  "types": "dist/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iojuedioe9rd/cats-react-hooks.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc src/index.ts --declaration --declarationDir ./types --outDir ./dist --target ES6 --allowSyntheticDefaultImports",
+    "build": "tsc src/index.ts --declaration --declarationDir dist --outDir ./dist --target ES6 --allowSyntheticDefaultImports",
     "commit": "git-cz"
   },
   "keywords": [],
   "author": "Cats Studio",
   "license": "MIT",
   "dependencies": {
-    "react": "^18.2.0",
-    "tsc": "^2.0.4",
-    "typescript": "^5.2.2"
+    "lodash": "^4.17.21",
+    "react": "^18.2.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.200",
     "@types/react": "^18.2.31",
     "cz-conventional-changelog": "^3.3.0",
-    "semantic-release": "^22.0.5"
+    "semantic-release": "^22.0.5",
+    "tsc": "^2.0.4",
+    "typescript": "^5.2.2"
   },
   "config": {
     "commitizen": {

@@ -9,7 +9,7 @@ export function useSessionStorage<T>(key: string, initialValue: T | (() => T)) {
 }
 
 
-export function useStorage<T>(key: string, initialValue: T | (() => T), storageObject: Storage)
+export function useStorage<T>(key: string, initialValue: T | (() => T), storageObject: Storage): [T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>, () => void] 
 {
   const [value, setValue] = useState<T| undefined>(() => {
     const jsonValue = storageObject.getItem(key)
