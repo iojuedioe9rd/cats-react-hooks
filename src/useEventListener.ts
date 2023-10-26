@@ -3,8 +3,8 @@ import { useEffect, useRef } from "react";
 
 export default function useEventListener(
     eventType: string,
-    callback: (e: Event) => (void | Promise<void>),
-    element = window
+    callback: (a: any) => (void | Promise<void>),
+    element: EventTarget = window
 )
 {
     const callbackRef = useRef(callback)
@@ -14,7 +14,7 @@ export default function useEventListener(
     }, [callback])
 
     useEffect(() => {
-        const handler = (e: Event) => callbackRef.current(e)
+        const handler = (e: any) => callbackRef.current(e)
         element.addEventListener(eventType, handler)
 
         return () => element.removeEventListener(eventType, handler)

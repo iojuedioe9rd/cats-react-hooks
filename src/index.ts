@@ -17,6 +17,7 @@ import useEventListenerTMP from "./useEventListener";
 import useOnScreenTMP from "./useOnScreen";
 import useWindowSizeTMP from "./useWindowSize"
 import useLoggerTMP, {LoggerConfig} from "./useLogger";
+import useMediaQueryTMP from "./useMediaQuery"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -113,8 +114,8 @@ export function useDeepCompareEffect(callback: EffectCallback, dependencies?: Re
 
 export function useEventListener(
     eventType: string,
-    callback: (e: Event) => (void | Promise<void>),
-    element = window
+    callback: (a: any) => (void | Promise<void>),
+    element: EventTarget = window
 )
 {
     return useEventListenerTMP(eventType, callback, element)
@@ -132,4 +133,9 @@ export function useWindowSize()
 export function useLogger(loggerConfig: LoggerConfig)
 {
     return useLoggerTMP(loggerConfig)
+}
+
+export function useMediaQuery(mediaQuery: string)
+{
+    return useMediaQueryTMP(mediaQuery)
 }
