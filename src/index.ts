@@ -16,6 +16,7 @@ import useDeepCompareEffectTMP from "./useDeepCompareEffect"
 import useEventListenerTMP from "./useEventListener";
 import useOnScreenTMP from "./useOnScreen";
 import useWindowSizeTMP from "./useWindowSize"
+import useLoggerTMP, {LoggerConfig} from "./useLogger";
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -126,4 +127,9 @@ export function useOnScreen(ref: React.MutableRefObject<HTMLElement>, rootMargin
 export function useWindowSize()
 {
     return useWindowSizeTMP()
+}
+
+export function useLogger(loggerConfig: LoggerConfig)
+{
+    return useLoggerTMP(loggerConfig)
 }
