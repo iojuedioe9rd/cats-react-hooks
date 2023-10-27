@@ -19,6 +19,8 @@ import useWindowSizeTMP from "./useWindowSize"
 import useLoggerTMP, {LoggerConfig} from "./useLogger";
 import useMediaQueryTMP from "./useMediaQuery"
 import useGeolocationTMP from "./useGeolocation"
+import useStateWithValidationTMP from "./useStateWithValidation"
+import useSizeTMP from "./useSize";
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -144,4 +146,14 @@ export function useMediaQuery(mediaQuery: string)
 export function useGeolocation(options?: PositionOptions)
 {
     return useGeolocationTMP(options)
+}
+
+export function useStateWithValidation<T>(validationFunc: (state: T) => boolean, initialValue: T | (() => T))
+{
+    return useStateWithValidationTMP<T>(validationFunc, initialValue)
+}
+
+export function useSize(ref: React.MutableRefObject<HTMLElement>)
+{
+    return useSizeTMP(ref)
 }
