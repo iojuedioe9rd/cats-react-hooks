@@ -21,6 +21,7 @@ import useMediaQueryTMP from "./useMediaQuery"
 import useGeolocationTMP from "./useGeolocation"
 import useStateWithValidationTMP from "./useStateWithValidation"
 import useSizeTMP from "./useSize";
+import useEffectOnceTMP from "./useEffectOnce"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -156,4 +157,9 @@ export function useStateWithValidation<T>(validationFunc: (state: T) => boolean,
 export function useSize(ref: React.MutableRefObject<HTMLElement>)
 {
     return useSizeTMP(ref)
+}
+
+export function useEffectOnce(cb: EffectCallback)
+{
+    useEffectOnceTMP(cb)
 }
