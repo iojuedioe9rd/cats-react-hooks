@@ -22,6 +22,7 @@ import useGeolocationTMP from "./useGeolocation"
 import useStateWithValidationTMP from "./useStateWithValidation"
 import useSizeTMP from "./useSize";
 import useEffectOnceTMP from "./useEffectOnce"
+import useCanvasTMP, {useCanvasInput} from "./useCanvas"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -162,4 +163,9 @@ export function useSize(ref: React.MutableRefObject<HTMLElement>)
 export function useEffectOnce(cb: EffectCallback)
 {
     useEffectOnceTMP(cb)
+}
+
+export function useCanvas({update, draw, fps = 60, loop = true}: useCanvasInput)
+{
+    return useCanvasTMP({update, draw, fps, loop})
 }
