@@ -23,6 +23,7 @@ import useStateWithValidationTMP from "./useStateWithValidation"
 import useSizeTMP from "./useSize";
 import useEffectOnceTMP from "./useEffectOnce"
 import useCanvasTMP, {useCanvasInput} from "./useCanvas"
+import useCustomEventTMP from "./useCustomEvent"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -168,4 +169,9 @@ export function useEffectOnce(cb: EffectCallback)
 export function useCanvas({update, draw, fps = 60, loop = true}: useCanvasInput)
 {
     return useCanvasTMP({update, draw, fps, loop})
+}
+
+export function useCustomEvent<T>(name: string, data?: CustomEventInit<T>)
+{
+    return useCustomEventTMP<T>(name, data)
 }
