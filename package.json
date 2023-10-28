@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc src/index.ts --declaration --declarationDir dist --outDir ./dist --target ES6 --allowSyntheticDefaultImports",
+    "build": "tsc src/index.ts --declaration --declarationDir dist --outDir ./dist --target ES6 --allowSyntheticDefaultImports --module commonjs",
     "commit": "git-cz"
   },
   "keywords": [],

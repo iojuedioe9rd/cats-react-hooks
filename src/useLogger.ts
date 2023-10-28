@@ -14,11 +14,11 @@ export class Logger
     }
     public error(message?: any, ...optionalParams: any[])
     {
-        console.error(`%c[${this.loggerConfig.namespace}]: `,[this.loggerConfig.colors?.error ,optionalParams])
+        console.error(`%c[${this.loggerConfig.namespace}]: ${message}`,[this.loggerConfig.colors?.error ,optionalParams])
     }
     public warning(message?: any, ...optionalParams: any[])
     {
-        console.warn(`%c[${this.loggerConfig.namespace}]: `,[this.loggerConfig.colors?.warning ,optionalParams])
+        console.warn(`%c[${this.loggerConfig.namespace}]: ${message}`,[this.loggerConfig.colors?.warning ,optionalParams])
     }
 }
 
