@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import useEffectOnce from "./useEffectOnce";
 
+
 export type useCanvasInput = {
     draw?: (ctx : CanvasRenderingContext2D | null) => void
     update?: (ctx : CanvasRenderingContext2D | null) => void
@@ -11,6 +12,8 @@ export default function useCanvas({update, draw, fps = 60, loop = true}: useCanv
 {
     const canvas = useRef<HTMLCanvasElement>()
     const ctx = useRef<CanvasRenderingContext2D | null>(null)
+    
+    
 
     useEffectOnce(() => {
         canvas.current = document.createElement("canvas")
@@ -18,11 +21,14 @@ export default function useCanvas({update, draw, fps = 60, loop = true}: useCanv
 
         if(loop)
         {
-            window.setInterval(() => {
+            var ID = window.setInterval(() => {
                 if (update !== undefined) update(ctx.current)
                 
                 if(draw !== undefined) draw(ctx.current)
             }, 1000 / fps);
+            return () => {
+                clearTimeout(ID)
+            }
         }
         
     })
