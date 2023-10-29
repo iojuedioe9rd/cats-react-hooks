@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import useDeepCompareEffect from "./useDeepCompareEffect"
 
 export class Logger
 {
@@ -41,9 +42,10 @@ export default function useLogger(loggerConfig: LoggerConfig)
 
     const [logger, setLogger] = useState<Logger>()
 
-    useEffect(() => {
+    useDeepCompareEffect(() => {
         setLogger(new Logger(_LoggerConfig))
-    }, [loggerConfig])
+    }, [loggerConfig])  
+    
 
     return logger
 }
