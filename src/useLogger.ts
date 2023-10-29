@@ -1,6 +1,39 @@
 import { useEffect, useState } from "react"
 import useDeepCompareEffect from "./useDeepCompareEffect"
 
+var colours = {
+    reset: "\x1b[0m",
+    bright: "\x1b[1m",
+    dim: "\x1b[2m",
+    underscore: "\x1b[4m",
+    blink: "\x1b[5m",
+    reverse: "\x1b[7m",
+    hidden: "\x1b[8m",
+    fg: {
+        black: "\x1b[30m",
+        red: "\x1b[31m",
+        green: "\x1b[32m",
+        yellow: "\x1b[33m",
+        blue: "\x1b[34m",
+        magenta: "\x1b[35m",
+        cyan: "\x1b[36m",
+        white: "\x1b[37m",
+        gray: "\x1b[90m",
+        crimson: "\x1b[38m" // Scarlet
+    },
+    bg: {
+        black: "\x1b[40m",
+        red: "\x1b[41m",
+        green: "\x1b[42m",
+        yellow: "\x1b[43m",
+        blue: "\x1b[44m",
+        magenta: "\x1b[45m",
+        cyan: "\x1b[46m",
+        white: "\x1b[47m",
+        gray: "\x1b[100m",
+        crimson: "\x1b[48m"
+    }
+};
 export class Logger
 {
     loggerConfig: LoggerConfig
@@ -11,39 +44,32 @@ export class Logger
 
     public log(message?: any, ...optionalParams: any[])
     {
-        console.log(`%c[${this.loggerConfig.namespace}]: ${message}`,[this.loggerConfig.colors?.log ,optionalParams])
+        console.log(`${colours.fg.gray}[${this.loggerConfig.namespace}]: ${message}`,optionalParams)
     }
     public error(message?: any, ...optionalParams: any[])
     {
-        console.error(`%c[${this.loggerConfig.namespace}]: ${message}`,[this.loggerConfig.colors?.error ,optionalParams])
+        console.error(`${colours.fg.red}[${this.loggerConfig.namespace}]: ${message}`,optionalParams)
     }
     public warning(message?: any, ...optionalParams: any[])
     {
-        console.warn(`%c[${this.loggerConfig.namespace}]: ${message}`,[this.loggerConfig.colors?.warning ,optionalParams])
+        console.warn(`${colours.fg.yellow}[${this.loggerConfig.namespace}]: ${message}`,optionalParams)
     }
 }
 
 export type LoggerConfig = {
     namespace: string
-    colors?:{
-        log: string,
-        error: string,
-        warning: string
-    }
+    
 }
 
 export default function useLogger(loggerConfig: LoggerConfig)
 {
-    var _LoggerConfig: LoggerConfig = {colors: {
-        log: "",
-        error: "color: red",
-        warning: "color: yellow"
-    }, ...loggerConfig}
+    
+    
 
     const [logger, setLogger] = useState<Logger>()
 
     useDeepCompareEffect(() => {
-        setLogger(new Logger(_LoggerConfig))
+        setLogger(new Logger(loggerConfig))
     }, [loggerConfig])  
     
 
