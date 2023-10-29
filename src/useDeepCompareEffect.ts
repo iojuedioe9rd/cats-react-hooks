@@ -1,5 +1,5 @@
 import { EffectCallback, useEffect, useRef } from "react";
-import isEqual from "lodash/isEqual"
+import {isEqual} from "lodash"
 
 export default function useDeepCompareEffect(callback: EffectCallback, dependencies?: React.DependencyList)
 {
