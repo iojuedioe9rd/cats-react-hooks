@@ -24,6 +24,7 @@ import useSizeTMP from "./useSize";
 import useEffectOnceTMP from "./useEffectOnce"
 import useCanvasTMP, {useCanvasInput} from "./useCanvas"
 import useCustomEventTMP from "./useCustomEvent"
+import useClickOutsideTMP from "./useClickOutside";
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -174,4 +175,9 @@ export function useCanvas({update, draw, fps = 60, loop = true}: useCanvasInput)
 export function useCustomEvent<T>(name: string, data?: CustomEventInit<T>)
 {
     return useCustomEventTMP<T>(name, data)
+}
+
+export function useClickOutside(ref: React.MutableRefObject<HTMLElement>, cb: (event: MouseEvent) => (void | Promise<void>))
+{
+    return useClickOutsideTMP(ref, cb)
 }

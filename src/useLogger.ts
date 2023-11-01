@@ -42,17 +42,17 @@ export class Logger
         this.loggerConfig = loggerConfig
     }
 
-    public log(message?: any, ...optionalParams: any[])
+    public log(...message: any)
     {
-        console.log(`${colours.fg.gray}[${this.loggerConfig.namespace}]: ${message}`,optionalParams)
+        console.log(`${colours.fg.gray}[${this.loggerConfig.namespace}]: ${message}`)
     }
-    public error(message?: any, ...optionalParams: any[])
+    public error(...message: any)
     {
-        console.error(`${colours.fg.red}[${this.loggerConfig.namespace}]: ${message}`,optionalParams)
+        console.error(`${colours.fg.red}[${this.loggerConfig.namespace}]: ${message}`)
     }
-    public warning(message?: any, ...optionalParams: any[])
+    public warning(...message: any)
     {
-        console.warn(`${colours.fg.yellow}[${this.loggerConfig.namespace}]: ${message}`,optionalParams)
+        console.warn(`${colours.fg.yellow}[${this.loggerConfig.namespace}]: ${message}`)
     }
 }
 
