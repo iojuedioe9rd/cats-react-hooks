@@ -17,10 +17,13 @@
   "author": "Cats Studio",
   "license": "MIT",
   "dependencies": {
+    "copy-to-clipboard": "^3.1.0",
+    "js-cookie": "^3.0.4",
     "lodash": "^4.17.21",
     "react": "^18.2.0"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.3",
     "@types/lodash": "^4.14.200",
     "@types/react": "^18.2.31",
     "cz-conventional-changelog": "^3.3.0",

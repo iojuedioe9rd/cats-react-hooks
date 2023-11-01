@@ -26,6 +26,7 @@ import useCanvasTMP, {useCanvasInput} from "./useCanvas"
 import useCustomEventTMP from "./useCustomEvent"
 import useClickOutsideTMP from "./useClickOutside";
 import useDarkModeTMP from "./useDarkMode";
+import useCopyToClipboardTMP, {Options} from "./useCopyToClipboard"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T))
 {
@@ -196,4 +197,8 @@ export function useClickOutside(ref: React.MutableRefObject<HTMLElement>, cb: (e
 export function useDarkMode()
 {
     return useDarkModeTMP()
+}
+export function useCopyToClipboard(): [(text: string, options?: Options | undefined) => void, { value: string; success: boolean; }]
+{
+    return useCopyToClipboardTMP()
 }
