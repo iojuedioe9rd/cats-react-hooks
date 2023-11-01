@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react"
 import useDeepCompareEffect from "./useDeepCompareEffect"
 
+/**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @type {{ reset: string; bright: string; dim: string; underscore: string; blink: string; reverse: string; hidden: string; fg: { black: string; red: string; green: string; yellow: string; blue: string; magenta: string; cyan: string; white: string; gray: string; crimson: string; }; bg: { ...; \}; \}\}
+ */
 var colours = {
     reset: "\x1b[0m",
     bright: "\x1b[1m",
@@ -34,33 +40,90 @@ var colours = {
         crimson: "\x1b[48m"
     }
 };
+/**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @export
+ * @class Logger
+ * @typedef {Logger}
+ */
 export class Logger
 {
-    loggerConfig: LoggerConfig
-    constructor(loggerConfig: LoggerConfig)
+    /**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @type {LoggerConfig}
+ */
+loggerConfig: LoggerConfig
+    /**
+ * Creates an instance of Logger.
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @constructor
+ * @param {LoggerConfig} loggerConfig
+ */
+constructor(loggerConfig: LoggerConfig)
     {
         this.loggerConfig = loggerConfig
     }
 
-    public log(...message: any)
+    /**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @public
+ * @param {...*} message
+ */
+public log(...message: any)
     {
         console.log(`${colours.fg.gray}[${this.loggerConfig.namespace}]: ${message}`)
     }
-    public error(...message: any)
+    /**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @public
+ * @param {...*} message
+ */
+public error(...message: any)
     {
         console.error(`${colours.fg.red}[${this.loggerConfig.namespace}]: ${message}`)
     }
-    public warning(...message: any)
+    /**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @public
+ * @param {...*} message
+ */
+public warning(...message: any)
     {
         console.warn(`${colours.fg.yellow}[${this.loggerConfig.namespace}]: ${message}`)
     }
 }
 
+/**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @export
+ * @typedef {LoggerConfig}
+ */
 export type LoggerConfig = {
     namespace: string
     
 }
 
+/**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @export
+ * @param {LoggerConfig} loggerConfig
+ * @returns {*}
+ */
 export default function useLogger(loggerConfig: LoggerConfig)
 {
     

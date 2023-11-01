@@ -1,6 +1,16 @@
 import { useEffect, useRef } from "react";
 
 
+/**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @export
+ * @param {string} eventType
+ * @param {(a: any) => (void | Promise<void>)} callback
+ * @param {EventTarget} [element=window]
+ * @returns {any, element?: EventTarget) => void}
+ */
 export default function useEventListener(
     eventType: string,
     callback: (a: any) => (void | Promise<void>),

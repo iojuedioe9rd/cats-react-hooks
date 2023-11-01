@@ -4,6 +4,15 @@ import { useCallback, useEffect, useRef } from "react";
 
 
 
+/**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:55 PM
+ *
+ * @export
+ * @param {() => void |  Promise<void>} callback
+ * @param {number} delay
+ * @returns {any, delay: number) => { reset: any; clear: any; }\}
+ */
 export function useTimeout(callback: () => void |  Promise<void>, delay: number) 
 {
     const callbackRef = useRef(callback)

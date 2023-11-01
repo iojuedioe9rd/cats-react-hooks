@@ -1,5 +1,13 @@
 import useAsync from "./useAsync";
 
+/**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:56 PM
+ *
+ * @export
+ * @param {string} url
+ * @returns {({ loading: boolean; error: Error | undefined; })\}
+ */
 export default function useScript(url: string): { loading: boolean; error: Error | undefined; }
 {
     return useAsync<undefined>(() => {

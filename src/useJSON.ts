@@ -1,5 +1,12 @@
 import {useFetch} from "./useFetch"
 
+/**
+ * ${1:Description placeholder}
+ * @date 11/1/2023 - 4:18:54 PM
+ *
+ * @typedef {jsonInfo}
+ * @template T
+ */
 type jsonInfo<T> =
 {
     data?: T
