@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
 import useEventListener from "./useEventListener";
 
-/**
- * ${1:Description placeholder}
- * @date 11/1/2023 - 4:18:54 PM
- *
- * @export
- * @param {string} mediaQuery
- * @returns {*}
- */
+
 export default function useMediaQuery(mediaQuery: string)
 {
     const [isMatch, setIsMatch] = useState(false)
