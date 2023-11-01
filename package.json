@@ -24,7 +24,6 @@
     "@types/lodash": "^4.14.200",
     "@types/react": "^18.2.31",
     "cz-conventional-changelog": "^3.3.0",
-    "semantic-release": "^22.0.5",
     "tsc": "^2.0.4",
     "typescript": "^5.2.2"
   },
