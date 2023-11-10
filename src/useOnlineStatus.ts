@@ -1,4 +1,4 @@
-import { useState, useEffect,  } from "react";
+import { useState, useEffect } from "react";
 
 /**
  * ${1:Description placeholder}
@@ -8,23 +8,21 @@ import { useState, useEffect,  } from "react";
  * @returns {*}
  */
 export function useOnlineStatus() {
-    const [isOnline, setIsOnline] = useState(true);
+  const [isOnline, setIsOnline] = useState(true);
 
-    
-    
-    useEffect(() => {
-      function handleOnline() {
-        setIsOnline(true);
-      }
-      function handleOffline() {
-        setIsOnline(false);
-      }
-      window.addEventListener('online', handleOnline);
-      window.addEventListener('offline', handleOffline);
-      return () => {
-        window.removeEventListener('online', handleOnline);
-        window.removeEventListener('offline', handleOffline);
-      };
-    }, []);
-    return isOnline;
-  }
+  useEffect(() => {
+    function handleOnline() {
+      setIsOnline(true);
+    }
+    function handleOffline() {
+      setIsOnline(false);
+    }
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+  return isOnline;
+}

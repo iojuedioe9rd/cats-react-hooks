@@ -8,17 +8,19 @@ import useAsync from "./useAsync";
  * @param {string} url
  * @returns {({ loading: boolean; error: Error | undefined; })\}
  */
-export default function useScript(url: string): { loading: boolean; error: Error | undefined; }
-{
-    return useAsync<undefined>(() => {
-        const script = document.createElement("script")
-        script.src = url
-        script.async = true
+export default function useScript(url: string): {
+  loading: boolean;
+  error: Error | undefined;
+} {
+  return useAsync<undefined>(() => {
+    const script = document.createElement("script");
+    script.src = url;
+    script.async = true;
 
-        return new Promise<any>((resolve, reject) => {
-            script.addEventListener("load", resolve)
-            script.addEventListener("error", reject)
-            document.body.appendChild(script)
-        })
-    }, [url])
+    return new Promise<any>((resolve, reject) => {
+      script.addEventListener("load", resolve);
+      script.addEventListener("error", reject);
+      document.body.appendChild(script);
+    });
+  }, [url]);
 }

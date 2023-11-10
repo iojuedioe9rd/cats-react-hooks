@@ -1,4 +1,4 @@
-import React, { SetStateAction, useCallback, useEffect, useState } from "react"
+import React, { SetStateAction, useCallback, useEffect, useState } from "react";
 
 /**
  * ${1:Description placeholder}
@@ -10,26 +10,29 @@ import React, { SetStateAction, useCallback, useEffect, useState } from "react"
  * @param {React.DependencyList} [dependencies=[]]
  * @returns {Promise<SetStateAction<T>>, dependencies?: React.DependencyList) => { loading: any; error: any; value: any; }\}
  */
-export default function useAsync<T>(callback: () => Promise<SetStateAction<T | undefined>>, dependencies: React.DependencyList = []) {
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<Error | undefined>()
-  const [value, setValue] = useState<T | undefined>()
+export default function useAsync<T>(
+  callback: () => Promise<SetStateAction<T | undefined>>,
+  dependencies: React.DependencyList = [],
+) {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | undefined>();
+  const [value, setValue] = useState<T | undefined>();
 
   const callbackMemoized = useCallback(() => {
-    setLoading(true)
-    setError(undefined)
-    setValue(undefined)
+    setLoading(true);
+    setError(undefined);
+    setValue(undefined);
     callback()
       .then((v) => {
-        setValue(v)
+        setValue(v);
       })
       .catch(setError)
-      .finally(() => setLoading(false))
-  }, dependencies)
+      .finally(() => setLoading(false));
+  }, dependencies);
 
   useEffect(() => {
-    callbackMemoized()
-  }, [callbackMemoized])
+    callbackMemoized();
+  }, [callbackMemoized]);
 
-  return {loading, error, value }
+  return { loading, error, value };
 }

@@ -1,4 +1,4 @@
-import useAsync from "./useAsync"
+import useAsync from "./useAsync";
 
 /**
  * ${1:Description placeholder}
@@ -6,9 +6,9 @@ import useAsync from "./useAsync"
  *
  * @type {RequestInit}
  */
-const DEFAULT_OPTONS: RequestInit  = {
-    headers: {"Content-Type": "application/json"},
-}
+const DEFAULT_OPTONS: RequestInit = {
+  headers: { "Content-Type": "application/json" },
+};
 
 /**
  * ${1:Description placeholder}
@@ -21,11 +21,15 @@ const DEFAULT_OPTONS: RequestInit  = {
  * @param {React.DependencyList} [dependencies=[]]
  * @returns {T | undefined}
  */
-export function useFetch<T>(url: string, options: RequestInit = {}, dependencies: React.DependencyList = []) {
-    return useAsync<T>(async () => {
-        const res = await fetch(url, { ...DEFAULT_OPTONS, ...options })
-        if (res.ok) return res.json()
-        const json = await res.json()
-        return await Promise.reject(json)
-    }, dependencies)
+export function useFetch<T>(
+  url: string,
+  options: RequestInit = {},
+  dependencies: React.DependencyList = [],
+) {
+  return useAsync<T>(async () => {
+    const res = await fetch(url, { ...DEFAULT_OPTONS, ...options });
+    if (res.ok) return res.json();
+    const json = await res.json();
+    return await Promise.reject(json);
+  }, dependencies);
 }

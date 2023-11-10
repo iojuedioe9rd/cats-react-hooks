@@ -1,4 +1,4 @@
-import { EffectCallback, useEffect } from "react"
+import { EffectCallback, useEffect } from "react";
 
 /**
  * ${1:Description placeholder}
@@ -7,7 +7,6 @@ import { EffectCallback, useEffect } from "react"
  * @export
  * @param {EffectCallback} cb
  */
-export default function useEffectOnce(cb: EffectCallback)
-{
-    useEffect(cb, [])
+export default function useEffectOnce(cb: EffectCallback) {
+  useEffect(cb, []);
 }

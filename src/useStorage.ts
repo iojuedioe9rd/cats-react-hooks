@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react";
 
 /**
  * ${1:Description placeholder}
@@ -11,7 +11,7 @@ import { useCallback, useEffect, useState } from "react"
  * @returns {T)) => [T, React.Dispatch<React.SetStateAction<T>>, () => void]}
  */
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
-  return useStorage(key, initialValue, window.localStorage)
+  return useStorage(key, initialValue, window.localStorage);
 }
 
 /**
@@ -25,9 +25,8 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
  * @returns {T)) => [T, React.Dispatch<React.SetStateAction<T>>, () => void]}
  */
 export function useSessionStorage<T>(key: string, initialValue: T | (() => T)) {
-  return useStorage(key, initialValue, window.sessionStorage)
+  return useStorage(key, initialValue, window.sessionStorage);
 }
-
 
 /**
  * ${1:Description placeholder}
@@ -40,27 +39,33 @@ export function useSessionStorage<T>(key: string, initialValue: T | (() => T)) {
  * @param {Storage} storageObject
  * @returns {([T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>, () => void])}
  */
-export function useStorage<T>(key: string, initialValue: T | (() => T), storageObject: Storage): [T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>, () => void] 
-{
-  const [value, setValue] = useState<T| undefined>(() => {
-    const jsonValue = storageObject.getItem(key)
-    if (jsonValue != null) return JSON.parse(jsonValue)
+export function useStorage<T>(
+  key: string,
+  initialValue: T | (() => T),
+  storageObject: Storage,
+): [
+  T | undefined,
+  React.Dispatch<React.SetStateAction<T | undefined>>,
+  () => void,
+] {
+  const [value, setValue] = useState<T | undefined>(() => {
+    const jsonValue = storageObject.getItem(key);
+    if (jsonValue != null) return JSON.parse(jsonValue);
 
-    if (typeof(initialValue) === "function") return (initialValue as () => T)()
+    if (typeof initialValue === "function") return (initialValue as () => T)();
     else {
-      return initialValue
+      return initialValue;
     }
-  })
+  });
 
   useEffect(() => {
-    if (value === undefined) return storageObject.removeItem(key)
-    storageObject.setItem(key, JSON.stringify(value))
-
-  }, [key, value, storageObject])
+    if (value === undefined) return storageObject.removeItem(key);
+    storageObject.setItem(key, JSON.stringify(value));
+  }, [key, value, storageObject]);
 
   const remove = useCallback(() => {
-    setValue(undefined)
-  }, [])
+    setValue(undefined);
+  }, []);
 
-  return [value, setValue, remove]
+  return [value, setValue, remove];
 }

@@ -10,15 +10,15 @@ import { useEffect, useState } from "react";
  * @param {?CustomEventInit<T>} [data]
  * @returns {*}
  */
-export default function useCustomEvent<T>(name: string, data?: CustomEventInit<T>)
-{
-    const [event, setEvent] = useState<CustomEvent<T>>()
+export default function useCustomEvent<T>(
+  name: string,
+  data?: CustomEventInit<T>,
+) {
+  const [event, setEvent] = useState<CustomEvent<T>>();
 
-    useEffect(() => {
-        setEvent(new CustomEvent<T>(name, data))
-        
-    }, [data])
+  useEffect(() => {
+    setEvent(new CustomEvent<T>(name, data));
+  }, [data]);
 
-    return event
-
+  return event;
 }

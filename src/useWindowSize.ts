@@ -1,5 +1,5 @@
-import { useState } from "react"
-import useEventListener from "./useEventListener"
+import { useState } from "react";
+import useEventListener from "./useEventListener";
 
 /**
  * ${1:Description placeholder}
@@ -9,9 +9,9 @@ import useEventListener from "./useEventListener"
  * @typedef {Size}
  */
 export type Size = {
-    width: number
-    height: number
-}
+  width: number;
+  height: number;
+};
 
 /**
  * ${1:Description placeholder}
@@ -21,14 +21,17 @@ export type Size = {
  * @returns {*}
  */
 export default function useWindowSize() {
-    const [windowSize, setWindowSize] = useState<Size>({
-        width: window.innerWidth,
-        height: window.innerHeight
-    })
+  const [windowSize, setWindowSize] = useState<Size>({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
-    useEventListener("resize",async (e: Event) => {
-        await setWindowSize({width: window.innerWidth, height: window.innerHeight})
-    })
+  useEventListener("resize", async (e: Event) => {
+    await setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  });
 
-    return windowSize
+  return windowSize;
 }

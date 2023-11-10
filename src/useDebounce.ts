@@ -12,10 +12,13 @@ import React from "react";
  * @param {React.DependencyList} dependencies
  * @returns {any, delay: number, dependencies: React.DependencyList) => void}
  */
-export function useDebounce(callback: () => void |  Promise<void>, delay: number, dependencies: React.DependencyList)
-{
-    const {reset, clear} = useTimeout(callback, delay)
+export function useDebounce(
+  callback: () => void | Promise<void>,
+  delay: number,
+  dependencies: React.DependencyList,
+) {
+  const { reset, clear } = useTimeout(callback, delay);
 
-    useEffect(reset, [...dependencies, reset])
-    useEffect(clear, [])
+  useEffect(reset, [...dependencies, reset]);
+  useEffect(clear, []);
 }

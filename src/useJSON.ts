@@ -1,4 +1,4 @@
-import {useFetch} from "./useFetch"
+import { useFetch } from "./useFetch";
 
 /**
  * ${1:Description placeholder}
@@ -7,33 +7,26 @@ import {useFetch} from "./useFetch"
  * @typedef {jsonInfo}
  * @template T
  */
-type jsonInfo<T> =
-{
-    data?: T
-    isLoaded?: boolean
-    isError?: boolean
-}
+type jsonInfo<T> = {
+  data?: T;
+  isLoaded?: boolean;
+  isError?: boolean;
+};
 
 /**
  * @deprecated Use the Fetch Hook Instead
  */
-export function useJSON<T>(url: string | URL)
-{
-    var {
-        error,
-        value} = useFetch<T>(url.toString())
-    
-    var json: jsonInfo<T> = {}
-    if(error !== undefined)
-    {
-        json.isLoaded = false
-        json.isError = true
-    }
-    else
-    {
-        json.data = value
-        json.isLoaded  = false
-    }
+export function useJSON<T>(url: string | URL) {
+  var { error, value } = useFetch<T>(url.toString());
 
-    return json
+  var json: jsonInfo<T> = {};
+  if (error !== undefined) {
+    json.isLoaded = false;
+    json.isError = true;
+  } else {
+    json.data = value;
+    json.isLoaded = false;
+  }
+
+  return json;
 }

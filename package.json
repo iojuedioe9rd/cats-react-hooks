@@ -1,6 +1,6 @@
 {
-  "name": "cats-react-hooks",
-  "version": "1.4.0",
+  "name": "@cats-react/cats-react-hooks",
+  "version": "1.4.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/",
@@ -11,7 +11,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc src/index.ts --declaration --declarationDir dist --outDir ./dist --target ES6 --allowSyntheticDefaultImports --module commonjs",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "prepublish": "npm run prettier",
+    "prettier": "prettier . --write"
   },
   "keywords": [],
   "author": "Cats Studio",
@@ -27,6 +29,7 @@
     "@types/lodash": "^4.14.200",
     "@types/react": "^18.2.31",
     "cz-conventional-changelog": "^3.3.0",
+    "prettier": "3.0.3",
     "tsc": "^2.0.4",
     "typescript": "^5.2.2"
   },

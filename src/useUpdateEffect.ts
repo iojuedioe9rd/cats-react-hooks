@@ -8,18 +8,18 @@ import React, { useEffect, useRef } from "react";
  * @param {React.EffectCallback} callback
  * @param {(React.DependencyList | undefined)} dependencies
  */
-export function useUpdateEffect(callback: React.EffectCallback, dependencies: React.DependencyList | undefined)
-{
-    const firstRenderRef = useRef(true)
+export function useUpdateEffect(
+  callback: React.EffectCallback,
+  dependencies: React.DependencyList | undefined,
+) {
+  const firstRenderRef = useRef(true);
 
-    useEffect(() => {
-        if (firstRenderRef.current)
-        {
-            firstRenderRef.current = false
-            return () => {}
-        }
-        
-        return callback()
-        
-    }, dependencies)
+  useEffect(() => {
+    if (firstRenderRef.current) {
+      firstRenderRef.current = false;
+      return () => {};
+    }
+
+    return callback();
+  }, dependencies);
 }
