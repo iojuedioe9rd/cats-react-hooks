@@ -7,9 +7,11 @@ import React, { useEffect, useState } from "react";
  *
  * @export
  * @param {React.MutableRefObject<HTMLElement>} ref
- * @returns {*}
+ * @returns {DOMRectReadOnly | undefined}
  */
-export default function useSize(ref: React.MutableRefObject<HTMLElement>) {
+export default function useSize(
+  ref: React.MutableRefObject<HTMLElement>,
+): DOMRectReadOnly | undefined {
   const [size, setSize] = useState<DOMRectReadOnly>();
 
   useEffect(() => {

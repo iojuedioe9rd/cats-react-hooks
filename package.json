@@ -1,6 +1,6 @@
 {
   "name": "@cats-react/cats-react-hooks",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/",
@@ -11,7 +11,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc src/index.ts --declaration --declarationDir dist --outDir ./dist --target ES6 --allowSyntheticDefaultImports --module commonjs",
+    "prebuild": "npm run prettier",
     "commit": "git-cz",
+    "precommit": "git add .",
     "prepublish": "npm run prettier",
     "prettier": "prettier . --write"
   },

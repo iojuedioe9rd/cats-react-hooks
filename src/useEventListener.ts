@@ -6,9 +6,9 @@ import { useEffect, useRef } from "react";
  *
  * @export
  * @param {string} eventType
- * @param {(a: any) => (void | Promise<void>)} callback
+ * @param {(a: Event) => (void | Promise<void>)} callback
  * @param {EventTarget} [element=window]
- * @returns {any, element?: EventTarget) => void}
+ * @returns { element?: EventTarget) => void}
  */
 export default function useEventListener(
   eventType: string,
