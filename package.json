@@ -14,7 +14,7 @@
     "prebuild": "npm run prettier",
     "commit": "git-cz",
     "precommit": "git add .",
-    "prepublish": "npm run prettier",
+    "prepublish": "npm run prettier && npn run build & npm run prettier",
     "prettier": "prettier . --write"
   },
   "keywords": [],
@@ -31,7 +31,7 @@
     "@types/lodash": "^4.14.201",
     "@types/react": "^18.2.37",
     "cz-conventional-changelog": "^3.3.0",
-    "prettier": "3.0.3",
+    "prettier": "3.1.0",
     "tsc": "^2.0.4",
     "typescript": "^5.2.2"
   },

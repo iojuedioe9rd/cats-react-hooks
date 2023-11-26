@@ -1,3 +1,5 @@
+"use client";
+
 import {
   useLocalStorage as useLocalStorageTMP,
   useSessionStorage as useSessionStorageTMP,

@@ -1,54 +1,32 @@
-import { useCallback, useEffect, useState } from "react";
+"use client";
+import { useCallback, useState } from "react";
+import useDeepCompareEffect from "./useDeepCompareEffect";
 
-/**
- * ${1:Description placeholder}
- * @date 11/1/2023 - 4:18:55 PM
- *
- * @export
- * @template T
- * @param {string} key
- * @param {(T | (() => T))} initialValue
- * @returns {T)) => [T, React.Dispatch<React.SetStateAction<T>>, () => void]}
- */
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
-  return useStorage(key, initialValue, window.localStorage);
+  return useStorage(key, initialValue, localStorage);
 }
 
-/**
- * ${1:Description placeholder}
- * @date 11/1/2023 - 4:18:55 PM
- *
- * @export
- * @template T
- * @param {string} key
- * @param {(T | (() => T))} initialValue
- * @returns {T)) => [T, React.Dispatch<React.SetStateAction<T>>, () => void]}
- */
 export function useSessionStorage<T>(key: string, initialValue: T | (() => T)) {
-  return useStorage(key, initialValue, window.sessionStorage);
+  return useStorage(key, initialValue, sessionStorage);
 }
 
-/**
- * ${1:Description placeholder}
- * @date 11/1/2023 - 4:18:55 PM
- *
- * @export
- * @template T
- * @param {string} key
- * @param {(T | (() => T))} initialValue
- * @param {Storage} storageObject
- * @returns {([T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>, () => void])}
- */
 export function useStorage<T>(
   key: string,
   initialValue: T | (() => T),
-  storageObject: Storage,
+  storageObject: Storage | undefined,
 ): [
   T | undefined,
   React.Dispatch<React.SetStateAction<T | undefined>>,
   () => void,
 ] {
   const [value, setValue] = useState<T | undefined>(() => {
+    if (!storageObject) {
+      if (typeof initialValue === "function")
+        return (initialValue as () => T)();
+      else {
+        return initialValue;
+      }
+    }
     const jsonValue = storageObject.getItem(key);
     if (jsonValue != null) return JSON.parse(jsonValue);
 
@@ -58,7 +36,8 @@ export function useStorage<T>(
     }
   });
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
+    if (!storageObject) return () => {};
     if (value === undefined) return storageObject.removeItem(key);
     storageObject.setItem(key, JSON.stringify(value));
   }, [key, value, storageObject]);

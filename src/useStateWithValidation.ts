@@ -11,8 +11,8 @@ import { useCallback, useState } from "react";
 export type Initializer<T> = T extends () => any
   ? T | (() => T)
   : T extends Function
-  ? never
-  : T | (() => T);
+    ? never
+    : T | (() => T);
 /**
  * ${1:Description placeholder}
  * @date 11/1/2023 - 4:18:55 PM
