@@ -33,6 +33,7 @@ import useCustomEventTMP from "./useCustomEvent";
 import useClickOutsideTMP from "./useClickOutside";
 import useDarkModeTMP from "./useDarkMode";
 import useCopyToClipboardTMP, { Options } from "./useCopyToClipboard";
+import useCookie from "./useCookie";
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
   return useLocalStorageTMP(key, initialValue);
@@ -218,3 +219,5 @@ export function useCopyToClipboard(): [
 ] {
   return useCopyToClipboardTMP();
 }
+
+export { useCookie };
