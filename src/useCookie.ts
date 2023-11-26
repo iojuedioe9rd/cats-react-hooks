@@ -7,6 +7,13 @@ export type UseCookieOut<MMMCookie> = [
   (options?: CookieAttributes | undefined) => void,
 ];
 
+/**
+ * Generates a hook that allows for interacting with a browser cookie.
+ *
+ * @param {string} name - The name of the cookie.
+ * @param {MMMCookie} defaultValue - The default value for the cookie.
+ * @return {UseCookieOut<MMMCookie>} - An array containing the current value of the cookie, as well as functions to update and delete the cookie.
+ */
 export default function useCookie<MMMCookie>(
   name: string,
   defaultValue: MMMCookie,

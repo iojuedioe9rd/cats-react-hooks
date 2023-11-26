@@ -3,13 +3,14 @@ import useEventListener from "./useEventListener";
 import React from "react";
 
 /**
- * ${1:Description placeholder}
- * @date 11/1/2023 - 4:18:54 PM
+ * This function checks if the given value is a valid DOM node.
+ * If the value is null or does not have the "nodeType" property, an error is thrown.
  *
- * @export
- * @param {(EventTarget | null)} e
+ * @param {EventTarget | null} e - The value to be checked.
+ * @throws {Error} - If the value is not a valid DOM node.
  */
 export function assertIsNode(e: EventTarget | null) {
+  // Check if the value is null or does not have the "nodeType" property
   if (!e || !("nodeType" in e)) {
     throw new Error(`Node expected`);
   }
