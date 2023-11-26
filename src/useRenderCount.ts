@@ -1,5 +1,3 @@
-
-
 import { useEffect, useRef } from "react";
 
 /** Custom hook to track the number of times a component renders */

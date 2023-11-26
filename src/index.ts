@@ -35,6 +35,7 @@ import useDarkModeTMP from "./useDarkMode";
 import useCopyToClipboardTMP, { Options } from "./useCopyToClipboard";
 import useCookie from "./useCookie";
 import useRenderCount from "./useRenderCount";
+import useDebugInformation from "./useDebugInformarion";
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
   return useLocalStorageTMP(key, initialValue);
@@ -221,4 +222,4 @@ export function useCopyToClipboard(): [
   return useCopyToClipboardTMP();
 }
 
-export { useCookie, useRenderCount };
+export { useCookie, useRenderCount, useDebugInformation };
